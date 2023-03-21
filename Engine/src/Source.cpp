@@ -8,7 +8,7 @@ namespace Engine
 	public:
 		inline Game(const CommandLineArgs& args) : Application (args)
 		{
-			std::cout << "Hello World" << std::endl;
+			std::cout << "Dev branch test" << std::endl;
 		}
 	};
 
