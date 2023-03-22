@@ -4,4 +4,4 @@
 #define PREPROCESSOR_STRINGIFY_MACRO(x) #x
 #define PREPROCESSOR_JOIN(x, y) x##y
 
-#define PREPROCESSOR_BIT(x) (1 << X)
+#define PREPROCESSOR_BIT(x) (1 << x)

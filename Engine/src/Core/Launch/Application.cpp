@@ -1,4 +1,5 @@
 #include "Application.h"
+#include "Events/EventManager.h"
 
 namespace Engine
 {
