@@ -3,7 +3,8 @@
 
 namespace Engine
 {
-    enum class JSONType {
+    enum class JSONType 
+    {
         NULL_TYPE,
         BOOL_TYPE,
         NUMBER_TYPE,
@@ -12,7 +13,8 @@ namespace Engine
         OBJECT_TYPE
     };
 
-    class JSON {
+    class JSON 
+    {
     public:
         JSON() : m_Type(JSONType::NULL_TYPE), m_Value("") {}
         JSON(bool b) : m_Type(JSONType::BOOL_TYPE), m_Value(b ? "true" : "false") {}
@@ -40,12 +42,14 @@ namespace Engine
         static JSON Parse(const CString& json);
         void Print(std::ostream& os) const;
 
-        JSON& operator[](const CString& key) {
+        JSON& operator[](const CString& key) 
+        {
             if (m_Type == JSONType::OBJECT_TYPE) return m_Object[key];
             else throw std::runtime_error("Not an Object");
         }
 
-        const JSON& operator[](const CString& key) const {
+        const JSON& operator[](const CString& key) const 
+        {
             if (m_Type == JSONType::OBJECT_TYPE) {
                 auto it = m_Object.find(key);
                 if (it != m_Object.end()) {
