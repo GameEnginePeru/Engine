@@ -1,5 +1,5 @@
 #include "Application.h"
-#include "Events/EventManager.h"
+#include "Tests/RunTests.h"
 
 namespace Engine
 {
@@ -18,7 +18,8 @@ namespace Engine
 	{
 		while (true)
 		{
-
+			Tests::RunAllTests();
+			std::cin.get();
 		}
 	}
 }
