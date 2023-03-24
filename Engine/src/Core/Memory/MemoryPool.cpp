@@ -3,12 +3,22 @@
 namespace Engine
 {
 	MemoryPool::MemoryPool(SIZE_T reserved, SIZE_T unitSize)
-		: m_uBlockSize(reserved * (unitSize + sizeof(MemoryUnit))), m_uUnitSize(unitSize)
+		: m_uReserved(reserved), m_uBlockSize(reserved * (unitSize + sizeof(MemoryUnit))), m_uUnitSize(unitSize)
+	{
+		OnCreate();
+	}
+
+	MemoryPool::~MemoryPool()
+	{
+		OnDestroy();
+	}
+
+	void MemoryPool::OnCreate()
 	{
 		m_pMemoryBlock = malloc(m_uBlockSize);
 		if (m_pMemoryBlock)
 		{
-			for (SIZE_T i = 0; i < reserved; i++)
+			for (SIZE_T i = 0; i < m_uReserved; i++)
 			{
 				MemoryUnit* pCurrentUnit = (MemoryUnit*)((char*)m_pMemoryBlock + i * (m_uUnitSize + sizeof(MemoryUnit)));
 
@@ -24,7 +34,7 @@ namespace Engine
 		}
 	}
 
-	MemoryPool::~MemoryPool()
+	void MemoryPool::OnDestroy()
 	{
 		free(m_pMemoryBlock);
 	}

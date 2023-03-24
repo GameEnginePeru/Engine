@@ -11,6 +11,21 @@ namespace Engine
 
 		void* Allocate();
 		void Free(void* ptr);
+
+		template<typename T>
+		void OnUpdate()
+		{
+			MemoryUnit* pCurrent = m_pAllocatedUnit;
+			while (pCurrent != nullptr)
+			{
+				T* obj = reinterpret_cast<T*>((void*)((char*)pCurrent + sizeof(MemoryUnit)));
+				obj->OnUpdate();
+				pCurrent = pCurrent->pNext;
+			}
+		}
+	private:
+		void OnCreate();
+		void OnDestroy();
 	private:
 		struct MemoryUnit
 		{
@@ -25,5 +40,6 @@ namespace Engine
 
 		SIZE_T m_uUnitSize;
 		SIZE_T m_uBlockSize;
+		SIZE_T m_uReserved;
 	};
 }
