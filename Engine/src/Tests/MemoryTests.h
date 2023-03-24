@@ -16,6 +16,8 @@ namespace Engine::Tests::Memory
 	void IterateTest()
 	{
 		Test test{ .name = "Iteration test" };
+		TestResultData resultData1{ .name = "Memory Pool", .unit = "ms" };
+		TestResultData resultData2{ .name = "Standard Allocation", .unit = "ms" };
 
 		class TestStruct
 		{
@@ -33,13 +35,13 @@ namespace Engine::Tests::Memory
 				static MemoryPool* instance;
 				if (instance == nullptr)
 				{
-					instance = new MemoryPool(1000000, sizeof(TestStruct));
+					instance = new MemoryPool(10000000, sizeof(TestStruct));
 				}
 				return instance;
 			}
 		};
 
-		SIZE_T reserve = 1000000;
+		SIZE_T reserve = 10000000;
 		std::vector<TestStruct*> items;
 
 		// Instance Pool
@@ -51,19 +53,14 @@ namespace Engine::Tests::Memory
 
 		// Loop Pool
 		auto start = std::chrono::steady_clock::now();
-		for (const auto& it : items)
-		{
-			it->OnUpdate();
-		}
+		for (const auto& it : items) it->OnUpdate();
 		auto end = std::chrono::steady_clock::now();
 
-		for (const auto& it : items)
-		{
-			MemoryAllocator::Free(it);
-		}
+		// Clear Pool
+		for (const auto& it : items) MemoryAllocator::Free(it);
 		items.clear();
 
-		auto result1 = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+		resultData1.value = (float)std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
 		// Instance No Pool
 		for (uint32 i = 0; i < reserve; i++)
@@ -74,36 +71,27 @@ namespace Engine::Tests::Memory
 
 		// Loop No Pool
 		start = std::chrono::steady_clock::now();
-		for (const auto& it : items)
-		{
-			it->OnUpdate();
-		}
+		for (const auto& it : items) it->OnUpdate();
 		end = std::chrono::steady_clock::now();
 
 		// Clear No Pool
-		for (const auto& it : items)
-		{
-			delete it;
-		}
+		for (const auto& it : items) delete it;
 		items.clear();
 
-		auto result2 = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+		resultData2.value = (float)std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
-		if (result1 < result2)
-		{
-			auto diff = (float(result2 - result1) / float(result1 < 1 ? 1 : result1)) * 100.0f;
-			std::cout << test.name << " passed, memory pool(" + std::to_string(result1) + "ms) was " + std::to_string(diff) + "% faster than standard allocations(" << (result2) << "ms)" << std::endl;
-		}
-		else
-		{
-			auto diff = (float(result1 - result2) / float(result2 < 1 ? 1 : result2)) * 100.0f;
-			std::cout << test.name << " not passed, memory pool(" + std::to_string(result1) + "ms) was " + std::to_string(diff) + "% slower than standard allocations(" << (result2) << "ms)" << std::endl;
-		}
+		test.bPassed = resultData1.value < resultData2.value;
+		test.results.push_back(resultData1);
+		test.results.push_back(resultData2);
+
+		test.Print();
 	}
 
 	void EfficencyTest()
 	{
-		Test test{ .name = "Memory Pool efficency test" };
+		Test test{ .name = "Memory Efficency test" };
+		TestResultData resultData1 = { .name = "Memory Pool", .unit = "ms" };
+		TestResultData resultData2 = { .name = "Standard Allocation", .unit = "ms" };
 
 		class TestStruct
 		{
@@ -124,7 +112,7 @@ namespace Engine::Tests::Memory
 		}
 		auto end = std::chrono::steady_clock::now();
 
-		auto result1 = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+		resultData1.value = (float)std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
 		start = std::chrono::steady_clock::now();
 		for (uint32 i = 0; i < reserve; i++)
@@ -134,17 +122,12 @@ namespace Engine::Tests::Memory
 		}
 		end = std::chrono::steady_clock::now();
 
-		auto result2 = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+		resultData2.value = (float)std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
 
-		if (result1 < result2)
-		{
-			auto diff = (float(result2 - result1) / float(result1 < 1 ? 1 : result1)) * 100.0f;
-			std::cout << test.name << " passed, memory pool(" + std::to_string(result1)+ "ms) was " + std::to_string(diff) + "% faster than standard allocations(" << (result2) << "ms)" << std::endl;
-		}
-		else
-		{
-			auto diff = (float(result1 - result2) / float(result2 < 1 ? 1 : result2)) * 100.0f;
-			std::cout << test.name << " not passed, memory pool(" + std::to_string(result1) + "ms) was " + std::to_string(diff) + "% slower than standard allocations(" << (result2) << "ms)" << std::endl;
-		}
+		test.bPassed = resultData1.value < resultData2.value;
+		test.results.push_back(resultData1);
+		test.results.push_back(resultData2);
+
+		test.Print();
 	}
 }
