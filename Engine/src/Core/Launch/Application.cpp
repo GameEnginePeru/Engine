@@ -1,5 +1,6 @@
-#include "Application.h"
+#include "Core/Launch/Application.h"
 #include "Tests/RunTests.h"
+#include "Core/Logger/Logger.h"
 
 namespace Engine
 {
@@ -8,6 +9,8 @@ namespace Engine
 	Application::Application(CommandLineArgs args)
 	{
 		s_pThisApp = this;
+		Logger::Get().Init();
+		Logger::SetFlags(LogFlags::CONSOLE_LOG);
 	}
 
 	Application::~Application()

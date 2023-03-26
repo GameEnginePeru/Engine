@@ -34,7 +34,7 @@ namespace Engine::Tests::Events
 		EventDispatcher dispatcher(wre);
 		dispatcher.Dispatch();
 
-		std::cout << test.name << (test.bPassed ? " passed" : " not passed") << std::endl;
+		test.Print();
 	}
 
 	void EventHandlerTest()
@@ -50,6 +50,6 @@ namespace Engine::Tests::Events
 		EventDispatcher dispatcher(wce);
 		dispatcher.Dispatch();
 
-		std::cout << test.name << (test.bPassed ? " passed" : " not passed") << std::endl;
+		test.Print();
 	}
 }

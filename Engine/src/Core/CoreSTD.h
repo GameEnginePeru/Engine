@@ -11,6 +11,7 @@
 #include <vector>
 #include <unordered_map>
 #include <array>
+#include <format>
 
 typedef std::string CString;
 

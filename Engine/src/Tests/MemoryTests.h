@@ -15,7 +15,7 @@ namespace Engine::Tests::Memory
 
 	void IterateTest()
 	{
-		Test test{ .name = "Iteration test" };
+		Test test{ .name = "Memory Iteration" };
 		TestResultData resultData1{ .name = "Memory Pool", .unit = "ms" };
 		TestResultData resultData2{ .name = "Standard Allocation", .unit = "ms" };
 
@@ -89,7 +89,7 @@ namespace Engine::Tests::Memory
 
 	void EfficencyTest()
 	{
-		Test test{ .name = "Memory Efficency test" };
+		Test test{ .name = "Memory Efficency" };
 		TestResultData resultData1 = { .name = "Memory Pool", .unit = "ms" };
 		TestResultData resultData2 = { .name = "Standard Allocation", .unit = "ms" };
 

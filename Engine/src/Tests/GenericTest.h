@@ -1,5 +1,6 @@
 #pragma once
 #include "Tests/EventTests.h"
+#include "Core/Logger/Logger.h"
 
 namespace Engine::Tests
 {
@@ -28,14 +29,14 @@ namespace Engine::Tests
 	public:
 		inline void Print() const
 		{
-			std::cout << "---" << std::endl;
-			std::cout << name << (bPassed ? " " : " not") << " passed! ";
+			std::ostringstream stream;
+			stream << "TEST: " << name << (bPassed ? " " : " not ") << "passed! ";
 			for (const auto& result : results)
 			{
-				std::cout << result.name << "(" << result.value << result.unit << "), ";
+				stream << result.name << "(" << result.value << result.unit << "), ";
 			}
-			std::cout << std::endl;
-			std::cout << "---" << std::endl;
+			
+			(bPassed ? LOG_CORE_TRACE(stream.str()) : LOG_CORE_WARNING(stream.str()));
 		}
 	};
 }

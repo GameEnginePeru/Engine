@@ -11,3 +11,5 @@ struct WindowsPlatformTypes : public GenericPlatformTypes
 typedef WindowsPlatformTypes PlatformTypes;
 
 #define PLATFORM_LITTLE_ENDIAN 1
+
+#include "Platform/WindowsPlatform/WindowsAPI.h"
