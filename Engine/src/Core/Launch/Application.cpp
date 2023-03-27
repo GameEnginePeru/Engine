@@ -11,6 +11,7 @@ namespace ENGINE_NAMESPACE
 		s_pThisApp = this;
 		Logger::Get().Init();
 		Logger::SetFlags(LogFlags::CONSOLE_LOG);
+		Tests::RunAllTests();
 	}
 
 	Application::~Application()
@@ -21,8 +22,12 @@ namespace ENGINE_NAMESPACE
 	{
 		while (true)
 		{
-			Tests::RunAllTests();
-			std::cin.get();
+			m_pWindow->OnUpdate();
 		}
+	}
+
+	void Application::CreateAppWindow(const WindowProperties& props)
+	{
+		m_pWindow = Window::Create(props);
 	}
 }

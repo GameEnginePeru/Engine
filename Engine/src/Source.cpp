@@ -6,7 +6,10 @@ namespace ENGINE_NAMESPACE
 	class Game : public Application
 	{
 	public:
-		inline Game(const CommandLineArgs& args) : Application (args) { }
+		inline Game(const CommandLineArgs& args) : Application (args) 
+		{
+			CreateAppWindow();
+		}
 	};
 
 	Application* CreateApplication(CommandLineArgs args)

@@ -1,25 +1,33 @@
 #pragma once
 #include "Core/Window/Window.h"
 
+#include <GLFW/glfw3.h>
+
 namespace ENGINE_NAMESPACE
 {
 	class WindowsWindow : public Window
 	{
 	public:
-		WindowsWindow(const WindowProperties& props) {}
-		virtual ~WindowsWindow() override {}
+		WindowsWindow(const WindowProperties& props);
+		virtual ~WindowsWindow() override;
 
-		virtual void OnUpdate() override {}
+		virtual void OnUpdate() override;
 		
 		virtual uint32 GetWidth() const override { return m_Data.uWidth; }
 		virtual uint32 GetHeight() const override { return m_Data.uHeight; }
 
-		virtual void SetVSync(bool bEnabled) override {}
+		virtual void SetVSync(bool bEnabled) override;
 		virtual bool IsVSync() const override { return m_Data.bVSync; }
 
-		// @TODO: change!
-		virtual void* GetNativeWindow() const override { return nullptr; }
+		virtual void* GetNativeWindow() const override { return m_pWindow; }
 	private:
+		void Init(const WindowProperties& props);
+		void Shutdown();
+	private:
+		GLFWwindow* m_pWindow = nullptr;
+		GLFWmonitor* m_pMonitor = nullptr;
+		const GLFWvidmode* m_pVideoMode = nullptr;
+
 		struct WindowData
 		{
 			CString title;
