@@ -10,18 +10,19 @@ namespace ENGINE_NAMESPACE
 	{
 		glfwMakeContextCurrent(m_pWindow);
 
-		// @TODO: Initialize GLEW
-
-		// glewExperimental = true
-		// auto success = glewInit()
-		// GLEW_OK
+		glewExperimental = true;
+		auto success = glewInit();
+		if (success != GLEW_OK)
+		{
+			LOG_CORE_ERROR("Failed to initialize GLEW!");
+		}
 
 		// Print OpenGL Info:
 
 		LOG_CORE_INFO("OpenGL Info:");
-		LOG_CORE_INFO("\tVendor: %s", glGetString(GL_VENDOR));
-		LOG_CORE_INFO("\tRenderer: %s", glGetString(GL_RENDERER));
-		LOG_CORE_INFO("\tVersion: %s", glGetString(GL_VERSION));
+		LOG_CORE_INFO("\tVendor: ", glGetString(GL_VENDOR));
+		LOG_CORE_INFO("\tRenderer: ", glGetString(GL_RENDERER));
+		LOG_CORE_INFO("\tVersion: ", glGetString(GL_VERSION));
 	}
 
 	void OpenGLContext::SwapBuffers()

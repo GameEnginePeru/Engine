@@ -22,6 +22,8 @@ namespace ENGINE_NAMESPACE
 
     void WindowsWindow::OnUpdate()
     {
+        glfwPollEvents();
+        m_pContext->SwapBuffers();
     }
 
     void WindowsWindow::SetVSync(bool bEnabled)
@@ -38,9 +40,15 @@ namespace ENGINE_NAMESPACE
         m_Data.bMaximized = props.bMaximized;
         m_Data.bResizable = props.bResizable;
 
+        LOG_CORE_INFO("Creating window ", props.title, "(", m_Data.uWidth, ", ", m_Data.uHeight, ")");
+
         if (s_GLFWWindowCount == 0)
         {
             auto success = glfwInit();
+            if (!success)
+            {
+                LOG_CORE_ERROR("Could not initialize GLFW");
+            }
             glfwSetErrorCallback(GLFWErrorCallback);
         }
 
@@ -53,7 +61,11 @@ namespace ENGINE_NAMESPACE
         m_pVideoMode = glfwGetVideoMode(m_pMonitor);
         s_GLFWWindowCount++;
 
-        // @TODO: Initialize Graphics Context
+        m_pContext = GraphicsContext::Create(m_pWindow);
+        m_pContext->Init();
+
+        glfwSetWindowUserPointer(m_pWindow, &m_Data);
+        SetVSync(true);
     }
 
     void WindowsWindow::Shutdown()

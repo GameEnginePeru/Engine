@@ -1,5 +1,6 @@
 #pragma once
 #include "Core/Window/Window.h"
+#include "Graphics/Context/GraphicsContext.h"
 
 #include <GLFW/glfw3.h>
 
@@ -27,6 +28,7 @@ namespace ENGINE_NAMESPACE
 		GLFWwindow* m_pWindow = nullptr;
 		GLFWmonitor* m_pMonitor = nullptr;
 		const GLFWvidmode* m_pVideoMode = nullptr;
+		Scope<GraphicsContext> m_pContext;
 
 		struct WindowData
 		{

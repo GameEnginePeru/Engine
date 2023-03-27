@@ -1,8 +1,10 @@
 #include "Graphics/API/RendererAPI.h"
 
+#include "GraphicInterfaces/OpenGL/API/OpenGLRendererAPI.h"
+
 namespace ENGINE_NAMESPACE
 {
-    RendererAPI::API RendererAPI::s_API = RendererAPI::API::OPENGL;
+    RendererAPI::API RendererAPI::s_API = RendererAPI::API::NONE;
 
     Ref<RendererAPI> RendererAPI::Create()
     {
@@ -11,7 +13,7 @@ namespace ENGINE_NAMESPACE
         case Engine::RendererAPI::API::NONE:
             return nullptr;
         case Engine::RendererAPI::API::OPENGL:
-            return nullptr;
+            return CreateRef<OpenGLRendererAPI>();
         default:
             return nullptr;
         }

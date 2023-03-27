@@ -1,6 +1,8 @@
 #pragma once
 #include "Graphics/Context/GraphicsContext.h"
 
+#define GLEW_STATIC
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
 namespace ENGINE_NAMESPACE

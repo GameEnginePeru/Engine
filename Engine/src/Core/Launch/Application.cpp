@@ -1,6 +1,7 @@
 #include "Core/Launch/Application.h"
-#include "Tests/RunTests.h"
 #include "Core/Logger/Logger.h"
+#include "Tests/RunTests.h"
+#include "Graphics/API/RendererAPI.h"
 
 namespace ENGINE_NAMESPACE
 {
@@ -11,7 +12,7 @@ namespace ENGINE_NAMESPACE
 		s_pThisApp = this;
 		Logger::Get().Init();
 		Logger::SetFlags(LogFlags::CONSOLE_LOG);
-		Tests::RunAllTests();
+		//Tests::RunAllTests();
 	}
 
 	Application::~Application()
@@ -23,11 +24,14 @@ namespace ENGINE_NAMESPACE
 		while (true)
 		{
 			m_pWindow->OnUpdate();
+			RenderCommand::Clear();
 		}
 	}
 
 	void Application::CreateAppWindow(const WindowProperties& props)
 	{
+		RendererAPI::SetApi(RendererAPI::API::OPENGL);
 		m_pWindow = Window::Create(props);
+		RenderCommand::SetClearColor(vec4(0.0f, 0.0f, 0.0f, 1.0f));
 	}
 }

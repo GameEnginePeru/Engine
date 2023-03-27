@@ -28,7 +28,7 @@ namespace ENGINE_NAMESPACE::Tests::Memory
 			uint64 n = 0;
 
 			void OnUpdate() { n++;  }
-			float x, y, z, w;
+			float x = 0.0f, y = 0.0f, z = 0.0f, w = 0.0f;
 		private:
 			static MemoryPool* GetPool()
 			{
@@ -98,7 +98,7 @@ namespace ENGINE_NAMESPACE::Tests::Memory
 		public:
 			TestStruct() {  }
 			~TestStruct() {  }
-			float x, y, z, w;
+			float x = 0.0f, y = 0.0f, z = 0.0f, w = 0.0f;
 		};
 
 		SIZE_T reserve = 10000000;
