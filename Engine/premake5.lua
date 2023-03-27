@@ -15,7 +15,14 @@ project "Engine"
 
     includedirs
     {
-        "src"
+        "src",
+        "vendor/GLFW/include"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib"
     }
 
     defines
