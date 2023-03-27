@@ -21,7 +21,7 @@ namespace ENGINE_NAMESPACE
 		virtual uint32 GetWidth() const = 0;
 		virtual uint32 GetHeight() const = 0;
 
-		virtual void SetVSync(bool enabled) = 0;
+		virtual void SetVSync(bool bEnabled) = 0;
 		virtual bool IsVSync() const = 0;
 
 		virtual void* GetNativeWindow() const = 0;
