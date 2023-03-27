@@ -2,7 +2,7 @@
 #include "Tests/EventTests.h"
 #include "Core/Logger/Logger.h"
 
-namespace Engine::Tests
+namespace ENGINE_NAMESPACE::Tests
 {
 	enum class TestSeverity
 	{

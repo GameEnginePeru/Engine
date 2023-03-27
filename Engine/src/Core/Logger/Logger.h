@@ -2,7 +2,7 @@
 #include "Core/CoreMinimal.h"
 #include "Utils/Time/Time.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	enum class LogType
 	{
@@ -96,12 +96,12 @@ namespace Engine
 	};
 }
 
-#define LOG_CORE_INFO(...) ::Engine::Logger::Log(::Engine::LogType::INFO_LOG, "ENGINE: ", __VA_ARGS__)
-#define LOG_CORE_TRACE(...) ::Engine::Logger::Log(::Engine::LogType::TRACE_LOG, "ENGINE: ", __VA_ARGS__)
-#define LOG_CORE_WARNING(...) ::Engine::Logger::Log(::Engine::LogType::WARNING_LOG, "ENGINE: ", __VA_ARGS__)
-#define LOG_CORE_ERROR(...) ::Engine::Logger::Log(::Engine::LogType::ERROR_LOG, "ENGINE: ", __VA_ARGS__)
+#define LOG_CORE_INFO(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::INFO_LOG, "ENGINE: ", __VA_ARGS__)
+#define LOG_CORE_TRACE(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::TRACE_LOG, "ENGINE: ", __VA_ARGS__)
+#define LOG_CORE_WARNING(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::WARNING_LOG, "ENGINE: ", __VA_ARGS__)
+#define LOG_CORE_ERROR(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::ERROR_LOG, "ENGINE: ", __VA_ARGS__)
 
-#define LOG_INFO(...) ::Engine::Logger::Log(::Engine::LogType::INFO_LOG, "APP: ", __VA_ARGS__)
-#define LOG_TRACE(...) ::Engine::Logger::Log(::Engine::LogType::TRACE_LOG, "APP: ", __VA_ARGS__)
-#define LOG_WARNING(...) ::Engine::Logger::Log(::Engine::LogType::WARNING_LOG, "APP: ", __VA_ARGS__)
-#define LOG_ERROR(...) ::Engine::Logger::Log(::Engine::LogType::ERROR_LOG, "APP: ", __VA_ARGS__)
+#define LOG_INFO(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::INFO_LOG, "APP: ", __VA_ARGS__)
+#define LOG_TRACE(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::TRACE_LOG, "APP: ", __VA_ARGS__)
+#define LOG_WARNING(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::WARNING_LOG, "APP: ", __VA_ARGS__)
+#define LOG_ERROR(...) ::ENGINE_NAMESPACE::Logger::Log(::ENGINE_NAMESPACE::LogType::ERROR_LOG, "APP: ", __VA_ARGS__)

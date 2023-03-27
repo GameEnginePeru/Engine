@@ -2,7 +2,7 @@
 #include "Core/Memory/MemoryAllocator.h"
 #include <chrono>
 
-namespace Engine::Tests::Memory
+namespace ENGINE_NAMESPACE::Tests::Memory
 {
 	void IterateTest();
 	void EfficencyTest();

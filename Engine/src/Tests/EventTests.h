@@ -3,7 +3,7 @@
 #include "Events/EventManager.h"
 #include "Tests/GenericTest.h"
 
-namespace Engine::Tests::Events
+namespace ENGINE_NAMESPACE::Tests::Events
 {
 	void StringIntegrityTest();
 	void EventHandlerTest();

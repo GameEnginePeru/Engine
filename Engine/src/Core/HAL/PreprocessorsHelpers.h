@@ -44,7 +44,7 @@ struct PREPROCESSOR_ENUM_FLAG_INTEGER_FOR_SIZE<8>
 template <typename T>
 struct PREPROCESSOR_ENUM_FLAG_SIZED_INTEGER
 {
-    typedef typename _ENUM_FLAG_INTEGER_FOR_SIZE<sizeof(T)>::type type;
+    typedef typename PREPROCESSOR_ENUM_FLAG_INTEGER_FOR_SIZE<sizeof(T)>::type type;
 };
 
 #define PREPROCESSOR_DEFINE_ENUM_FLAG_OPERATORS(ENUMTYPE) \

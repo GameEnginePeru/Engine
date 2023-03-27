@@ -1,6 +1,6 @@
 #include "Core/Memory/MemoryPool.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	MemoryPool::MemoryPool(SIZE_T reserved, SIZE_T unitSize)
 		: m_uReserved(reserved), m_uBlockSize(reserved * (unitSize + sizeof(MemoryUnit))), m_uUnitSize(unitSize)

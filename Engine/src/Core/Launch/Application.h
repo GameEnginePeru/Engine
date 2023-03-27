@@ -3,7 +3,7 @@
 
 int main(int argc, char** argv);
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	struct CommandLineArgs
 	{

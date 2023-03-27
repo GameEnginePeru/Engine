@@ -1,6 +1,6 @@
 #pragma once
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	class Timestep
 	{

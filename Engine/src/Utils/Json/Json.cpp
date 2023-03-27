@@ -1,6 +1,6 @@
 #include "Utils/Json/Json.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
     static void SkipWhiteSpace(const CString& json, size_t& i) 
     {

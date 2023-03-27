@@ -7,7 +7,7 @@
 #endif
 
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
     Logger& Logger::Get()
     {

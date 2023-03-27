@@ -2,7 +2,7 @@
 
 #include "Events/Event.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	class EventManager
 	{

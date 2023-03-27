@@ -2,7 +2,7 @@
 #include "Tests/RunTests.h"
 #include "Core/Logger/Logger.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	Application* Application::s_pThisApp = nullptr;
 

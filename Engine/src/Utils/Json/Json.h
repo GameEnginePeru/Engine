@@ -1,7 +1,7 @@
 #pragma once
 #include "Core/CoreSTD.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
     enum class JSONType 
     {

@@ -1,7 +1,7 @@
 #pragma once
 #include "Core/CoreMinimal.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	enum EventCategory
 	{

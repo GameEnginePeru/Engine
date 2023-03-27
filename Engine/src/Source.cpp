@@ -1,7 +1,7 @@
 #include "Core/Core.h"
 #include <iostream>
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	class Game : public Application
 	{

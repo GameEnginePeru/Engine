@@ -2,7 +2,7 @@
 #include "Core/CoreMinimal.h"
 #include "Core/Memory/MemoryPool.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	struct MemoryAllocatorIdentityHash
 	{

@@ -1,7 +1,7 @@
 #pragma once
 #include "Core/Logger/Logger.h"
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	class WindowsLogger : public Logger
 	{

@@ -1,7 +1,7 @@
 #include "Utils/Time/Time.h"
 #include <iomanip>
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
     CString Time::IGetTime(const char* format)
     {
