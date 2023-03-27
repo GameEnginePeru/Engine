@@ -1,9 +1,10 @@
 #pragma once
 #include "Core/CoreMinimal.h"
+#include "Core/Window/Window.h"
 
 int main(int argc, char** argv);
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	struct CommandLineArgs
 	{
@@ -26,7 +27,10 @@ namespace Engine
 	private:
 		friend int ::main(int argc, char** argv);
 		void Run();
+	protected:
+		void CreateAppWindow(const WindowProperties& props = WindowProperties());
 	private:
+		Scope<Window> m_pWindow;
 		static Application* s_pThisApp;
 	};
 

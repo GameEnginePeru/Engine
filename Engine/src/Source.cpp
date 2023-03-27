@@ -1,14 +1,14 @@
 #include "Core/Core.h"
 #include <iostream>
 
-namespace Engine
+namespace ENGINE_NAMESPACE
 {
 	class Game : public Application
 	{
 	public:
-		inline Game(const CommandLineArgs& args) : Application (args)
+		inline Game(const CommandLineArgs& args) : Application (args) 
 		{
-			std::cout << "Hello World" << std::endl;
+			CreateAppWindow();
 		}
 	};
 

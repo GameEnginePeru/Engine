@@ -15,7 +15,22 @@ project "Engine"
 
     includedirs
     {
-        "src"
+        "src",
+        "vendor/GLFW/include",
+        "vendor/glew/include",
+        "vendor/glm"
+    }
+
+    libdirs
+    {
+        "vendor/glew/lib"
+    }
+
+    links
+    {
+        "GLFW",
+        "opengl32.lib",
+        "glew32s.lib"
     }
 
     defines
