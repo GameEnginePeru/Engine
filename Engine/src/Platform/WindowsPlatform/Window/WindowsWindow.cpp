@@ -1,5 +1,6 @@
 #include "Platform/WindowsPlatform/Window/WindowsWindow.h"
 #include "Core/Logger/Logger.h"
+#include "Input/Input.h"
 
 namespace ENGINE_NAMESPACE
 {
@@ -39,6 +40,9 @@ namespace ENGINE_NAMESPACE
         m_Data.uHeight = props.uHeight;
         m_Data.bMaximized = props.bMaximized;
         m_Data.bResizable = props.bResizable;
+        m_Data.KeyCodeFun = Input::OnKeyEvent;
+        m_Data.MouseButtonFun = Input::OnMouseButtonEvent;
+        m_Data.MousePosFun = Input::OnMousePositionEvent;
 
         LOG_CORE_INFO("Creating window ", props.title, "(", m_Data.uWidth, ", ", m_Data.uHeight, ")");
 
@@ -66,6 +70,21 @@ namespace ENGINE_NAMESPACE
 
         glfwSetWindowUserPointer(m_pWindow, &m_Data);
         SetVSync(true);
+
+        glfwSetKeyCallback(m_pWindow, [](GLFWwindow* pWindow, int32 keycode, int32 scancode, int32 action, int32 mods) {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+            data.KeyCodeFun(keycode, action);
+        });
+
+        glfwSetMouseButtonCallback(m_pWindow, [](GLFWwindow* pWindow, int32 button, int32 action, int32 mods) {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+            data.MouseButtonFun(button, action);
+        });
+
+        glfwSetCursorPosCallback(m_pWindow, [](GLFWwindow* pWindow, double xpos, double ypos) {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+            data.MousePosFun(xpos, ypos);
+        });
     }
 
     void WindowsWindow::Shutdown()

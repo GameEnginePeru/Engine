@@ -38,6 +38,10 @@ namespace ENGINE_NAMESPACE
 			bool bResizable = false;
 			bool bMaximized = false;
 			uint32 uSamples = 0;
+
+			std::function<void(int32, int32)> KeyCodeFun;
+			std::function<void(int32, int32)> MouseButtonFun;
+			std::function<void(double, double)> MousePosFun;
 		} m_Data;
 	};
 }

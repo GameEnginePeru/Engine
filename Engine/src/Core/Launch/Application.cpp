@@ -2,6 +2,7 @@
 #include "Core/Logger/Logger.h"
 #include "Tests/RunTests.h"
 #include "Graphics/API/RendererAPI.h"
+#include "Input/Input.h"
 
 namespace ENGINE_NAMESPACE
 {
@@ -26,6 +27,9 @@ namespace ENGINE_NAMESPACE
 		{
 			m_pWindow->OnUpdate();
 			RenderCommand::Clear();
+
+			// This should go after the Update function!
+			Input::Update();
 		}
 	}
 

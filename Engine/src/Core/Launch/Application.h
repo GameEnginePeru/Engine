@@ -23,6 +23,7 @@ namespace ENGINE_NAMESPACE
 		Application(CommandLineArgs args);
 		~Application();
 
+		inline Window& GetWindow() const { return *m_pWindow; }
 		inline static Application* GetApp() { return s_pThisApp; }
 	private:
 		friend int ::main(int argc, char** argv);
