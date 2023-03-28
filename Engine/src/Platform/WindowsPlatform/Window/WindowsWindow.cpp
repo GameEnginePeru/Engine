@@ -1,6 +1,8 @@
 #include "Platform/WindowsPlatform/Window/WindowsWindow.h"
 #include "Core/Logger/Logger.h"
 #include "Input/Input.h"
+#include "Events/EventManager.h"
+#include "Events/ApplicationEvents.h"
 
 namespace ENGINE_NAMESPACE
 {
@@ -70,6 +72,16 @@ namespace ENGINE_NAMESPACE
 
         glfwSetWindowUserPointer(m_pWindow, &m_Data);
         SetVSync(true);
+
+        glfwSetWindowSizeCallback(m_pWindow, [](GLFWwindow* pWindow, int32 width, int32 height) {
+            WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
+        });
+
+        glfwSetWindowCloseCallback(m_pWindow, [](GLFWwindow* pWindow) {
+            WindowCloseEvent wce = WindowCloseEvent();
+            EventDispatcher dispatcher(wce);
+            dispatcher.Dispatch();
+        });
 
         glfwSetKeyCallback(m_pWindow, [](GLFWwindow* pWindow, int32 keycode, int32 scancode, int32 action, int32 mods) {
             WindowData& data = *(WindowData*)glfwGetWindowUserPointer(pWindow);
