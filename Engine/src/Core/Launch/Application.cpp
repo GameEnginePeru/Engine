@@ -12,6 +12,7 @@ namespace ENGINE_NAMESPACE
 		s_pThisApp = this;
 		Logger::Get().Init();
 		Logger::SetFlags(LogFlags::CONSOLE_LOG);
+		Random::Init();
 		//Tests::RunAllTests();
 	}
 

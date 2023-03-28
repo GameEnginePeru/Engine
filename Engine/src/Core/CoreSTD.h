@@ -7,6 +7,7 @@
 #include <fstream>
 
 #include <functional>
+#include <random>
 
 #include <string>
 #include <map>
