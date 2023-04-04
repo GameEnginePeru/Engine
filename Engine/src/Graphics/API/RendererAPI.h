@@ -44,7 +44,7 @@ namespace ENGINE_NAMESPACE
 		static void Clear() { Get()->Clear(); }
 
 		static void SetUnpackAlignment(uint32 alignment) { Get()->SetUnpackAlignment(alignment); }
-		static void SetViewport(u32 x, u32 y, u32 width, u32 height) { Get()->SetViewport(x, y, width, height); }
+		static void SetViewport(uint32 x, uint32 y, uint32 width, uint32 height) { Get()->SetViewport(x, y, width, height); }
 		static void SetClearColor(const vec4& color) { Get()->SetClearColor(color); }
 
 		// @TODO: Implement

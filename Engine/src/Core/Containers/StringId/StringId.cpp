@@ -13,7 +13,7 @@ namespace ENGINE_NAMESPACE
 
 		if (it == g_StringIdTable.end())
 		{
-			g_StringIdTable[sid] = strdup(str);
+			g_StringIdTable[sid] = _strdup(str);
 		}
 
 		return sid;

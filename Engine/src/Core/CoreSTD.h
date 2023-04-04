@@ -31,7 +31,12 @@ namespace ENGINE_NAMESPACE
 	class CUnorderedMap : public std::unordered_map<Key, Value, Hasher> {};
 
 	template<typename T>
-	class CVector : public std::vector<T> {};
+	class CVector : public std::vector<T> 
+	{
+	public:
+		using std::vector<T>::vector;
+		CVector(size_t reserveSize) : std::vector<T>() { this->reserve(reserveSize); }
+	};
 
 
 	// Smart Pointer Definitions

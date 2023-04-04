@@ -1,5 +1,5 @@
 #include "Core/Core.h"
-#include <iostream>
+#include "Graphics/Resources/Resources.h"
 
 namespace ENGINE_NAMESPACE
 {
@@ -9,6 +9,7 @@ namespace ENGINE_NAMESPACE
 		inline Game(const CommandLineArgs& args) : Application (args) 
 		{
 			CreateAppWindow();
+			Resources::CreateShader("assets/shaders/default.glsl");
 		}
 	};
 
